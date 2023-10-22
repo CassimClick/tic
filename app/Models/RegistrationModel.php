@@ -6,36 +6,20 @@ use CodeIgniter\Model;
 
 class RegistrationModel extends Model
 {
-    protected $DBGroup          = 'default';
-    protected $table            = 'registrations';
-    protected $primaryKey       = 'id';
-    protected $useAutoIncrement = true;
-    protected $returnType       = 'array';
-    protected $useSoftDeletes   = false;
-    protected $protectFields    = true;
-    protected $allowedFields    = [];
+    protected $db;
+    protected $registrationTable;
 
-    // Dates
-    protected $useTimestamps = false;
-    protected $dateFormat    = 'datetime';
-    protected $createdField  = 'created_at';
-    protected $updatedField  = 'updated_at';
-    protected $deletedField  = 'deleted_at';
+    public function __construct()
+    {
 
-    // Validation
-    protected $validationRules      = [];
-    protected $validationMessages   = [];
-    protected $skipValidation       = false;
-    protected $cleanValidationRules = true;
+        $this->db = \Config\Database::connect(); //database connection
+        $this->registrationTable = $this->db->table('registration');
+    }
 
-    // Callbacks
-    protected $allowCallbacks = true;
-    protected $beforeInsert   = [];
-    protected $afterInsert    = [];
-    protected $beforeUpdate   = [];
-    protected $afterUpdate    = [];
-    protected $beforeFind     = [];
-    protected $afterFind      = [];
-    protected $beforeDelete   = [];
-    protected $afterDelete    = [];
+
+    //save user registration form data
+    public function register($data)
+    {
+        return $this->registrationTable->insert($data);
+    }
 }

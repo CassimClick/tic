@@ -2,12 +2,16 @@
 
 namespace App\Controllers;
 
+use App\Models\RegistrationModel;
+
 class RegistrationController extends BaseController
 {
     protected $token;
+    protected $registrationModel;
     public function __construct()
     {
         $this->token = csrf_hash();
+        $this->registrationModel = new RegistrationModel();
     }
 
     // a method for getting variable and sanitize them to prevent xss attack
@@ -42,14 +46,20 @@ class RegistrationController extends BaseController
                 'passportNumber' => $this->getVariable('passportNumber'),
                 'email' => $this->getVariable('email'),
                 'registrationBody' => $this->getVariable('registrationBody'),
+                'typeOfBusiness' => $this->getVariable('typeOfBusiness'),
+                'physicalAddress' => $this->getVariable('physicalAddress'),
             ];
 
-            $statusCode = 200;
-            $response = [
-                'status' => 0,
-                'data' => $formData,
-                'token' => $this->token
-            ];
+            $query = $this->registrationModel->register($formData);
+            if ($query) {
+
+                $statusCode = 200;
+                $response = [
+                    'status' => 1,
+                    'msg' => 'Request Submitted Successfully',
+                    'token' => $this->token
+                ];
+            }
         } catch (\Throwable $th) {
             $statusCode = 500;
             $response = [

@@ -22,6 +22,7 @@ class CreateEventRequestTable extends Migration
             'middleName' => [
                 'type' => 'VARCHAR',
                 'constraint' => 100,
+                'null' => true,
             ],
             'lastName' => [
                 'type' => 'VARCHAR',
@@ -42,12 +43,18 @@ class CreateEventRequestTable extends Migration
             'passportNumber' => [
                 'type' => 'VARCHAR',
                 'constraint' => 20,
+                'null' => true,
             ],
-            'nidaId' => [
+            'nidaNumber' => [
                 'type' => 'VARCHAR',
                 'constraint' => 20,
+                'null' => true,
             ],
             'nationalityType' => [
+                'type' => 'VARCHAR',
+                'constraint' => 50,
+            ],
+            'country' => [
                 'type' => 'VARCHAR',
                 'constraint' => 50,
             ],
@@ -58,6 +65,7 @@ class CreateEventRequestTable extends Migration
             'email' => [
                 'type' => 'VARCHAR',
                 'constraint' => 100,
+                'null' => true,
             ],
             'physicalAddress' => [
                 'type' => 'VARCHAR',
@@ -68,6 +76,10 @@ class CreateEventRequestTable extends Migration
                 'constraint' => 100,
             ],
             'sector' => [
+                'type' => 'VARCHAR',
+                'constraint' => 100,
+            ],
+            'registrationBody' => [
                 'type' => 'VARCHAR',
                 'constraint' => 100,
             ],
@@ -82,11 +94,11 @@ class CreateEventRequestTable extends Migration
         ]);
 
         $this->forge->addKey('id', true);
-        $this->forge->createTable('event_request');
+        $this->forge->createTable('registration');
     }
 
     public function down()
     {
-        $this->forge->dropTable('event_request');
+        $this->forge->dropTable('registration');
     }
 }

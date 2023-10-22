@@ -59,6 +59,17 @@
 						</div>
 						<div class="col-md-6 col-sm-6">
 							<div class="form-group">
+								<label>Type Of Business </label>
+								<select class="form-control" name="typeOfBusiness" required>
+									<option disabled selected value="">--Select Type Of Business </option>
+									<option value="Small">Small</option>
+									<option value="Medium">Medium</option>
+									<option value="Large">Large</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-md-6 col-sm-6">
+							<div class="form-group">
 								<label for="">Nationality Type </label>
 								<select class="form-control" name="nationalityType" onchange="switchNationality(this.value)" required>
 									<option disabled selected value="">--Select Nationality</option>
@@ -93,6 +104,13 @@
 									<option value="Tanzanian">Tanzanian</option>
 									<option value="Canada">Canada</option>
 								</select>
+							</div>
+						</div>
+						<div class="col-md-6 col-sm-6">
+							<div class="form-group">
+								<label for="">Physical Address </label>
+								<input type="text" id="physicalAddress" name="physicalAddress" class="form-control" placeholder="Physical Address">
+
 							</div>
 						</div>
 						<div class="col-md-6 col-sm-6" id="passport" style="display: none;">
@@ -134,7 +152,12 @@
 								<label>Are you human? 3 + 1 =</label>
 								<input type="text" id="verify_contact" class=" form-control" placeholder=" 3 + 1 =">
 							</div> -->
-							<p><button type="submit" class="btn_1 add_bottom_15" id="submit-contact">Submit</button></p>
+							<p>
+								<button type="submit" class="btn_1 add_bottom_15" >
+									<div class="spinner-border spinner-border-sm" id="spinner" role="status" style="display: none;"></div>
+									Submit
+								</button>
+							</p>
 						</div>
 					</div>
 				</form>
@@ -163,9 +186,9 @@
 					Phone: +255 734 989470 <br><br>
 
 					Fax: +255 25 25 - 2504399 <br><br>
-					
+
 				</p>
-				
+
 				<hr class="styled">
 				<!-- <h4>Departmens</h4>
 				<ul class="contacts_info">
@@ -206,7 +229,7 @@
 		e.preventDefault()
 		//check if all required fields are filled
 		if ($('#registrationForm').valid()) {
-
+			submitInProgress(e.submitter)
 			//get the form data using form object
 			const formData = new FormData(registrationForm)
 
@@ -220,13 +243,22 @@
 				},
 				body: formData
 			}).then(res => res.json()).then(data => {
+				submitDone(e.submitter)
 				console.log(data)
+				const {
+					token,
+					msg,
+					status
+				} = data
+
+				document.querySelector('.token').value = token
+				swal({
+					text: msg,
+					//text: ,
+					icon: status == 1 ? 'success' : warning,
+				});
 			})
-			// swal({
-			// 	title: "Good job!",
-			// 	text: "You clicked the button!",
-			// 	icon: "success",
-			// });
+
 		}
 	})
 </script>

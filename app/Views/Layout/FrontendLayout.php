@@ -21,19 +21,34 @@
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,500,600" rel="stylesheet">
 
     <!-- BASE CSS -->
-    <link href="<?=base_url()?>frontend/css/bootstrap.min.css" rel="stylesheet">
-    <link href="<?=base_url()?>frontend/css/menu.css" rel="stylesheet">
-    <link href="<?=base_url()?>frontend/css/style.css" rel="stylesheet">
-    <link href="<?=base_url()?>frontend/css/vendors.css" rel="stylesheet">
+    <link href="<?= base_url() ?>frontend/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?= base_url() ?>frontend/css/menu.css" rel="stylesheet">
+    <link href="<?= base_url() ?>frontend/css/style.css" rel="stylesheet">
+    <link href="<?= base_url() ?>frontend/css/vendors.css" rel="stylesheet">
 
     <!-- YOUR CUSTOM CSS -->
-    <link href="<?=base_url()?>frontend/css/custom.css" rel="stylesheet">
+    <link href="<?= base_url() ?>frontend/css/custom.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <!-- MODERNIZR MENU -->
-    <script src="<?=base_url()?>frontend/js/modernizr.js"></script>
+    <script src="<?= base_url() ?>frontend/js/modernizr.js"></script>
+    <script>
+        function submitInProgress(button) {
+            let spinner = button.querySelector("#spinner")
+            spinner.style.display = 'inline-block'
+            // button.disabled = true
+
+        }
+
+        //remove loading animation
+        function submitDone(button) {
+            let spinner = button.querySelector("#spinner")
+            spinner.style.display = 'none'
+            // button.disabled = false
+        }
+    </script>
 
 </head>
 
@@ -51,7 +66,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-3">
-                    <a href="index-2.html"><img src="<?=base_url()?>frontend/assets/img/logo.png" alt="" width="49" height="35"></a>
+                    <a href="index-2.html"><img src="<?= base_url() ?>frontend/assets/img/logo.png" alt="" width="49" height="35"></a>
                 </div>
                 <div class="col-9 position-relative">
                     <!-- <div id="social">
@@ -86,7 +101,7 @@
 
     <footer class="clearfix">
         <div class="container">
-            <p>© <?=date('Y') ?> Tanzania Investment Centre (TIC)</p>
+            <p>© <?= date('Y') ?> Tanzania Investment Centre (TIC)</p>
             <!-- <ul>
                 <li><a href="https://www.tic.go.tz/" class="animated_link"></a></li>
                
@@ -106,14 +121,14 @@
     <!-- /cd-overlay-content -->
 
     <!-- COMMON SCRIPTS -->
-    <script src="<?=base_url()?>frontend/js/jquery-3.7.1.min.js"></script>
-    <script src="<?=base_url()?>frontend/js/common_scripts.min.js"></script>
-    <script src="<?=base_url()?>frontend/js/velocity.min.js"></script>
-    <script src="<?=base_url()?>frontend/js/functions.js"></script>
+    <script src="<?= base_url() ?>frontend/js/jquery-3.7.1.min.js"></script>
+    <script src="<?= base_url() ?>frontend/js/common_scripts.min.js"></script>
+    <script src="<?= base_url() ?>frontend/js/velocity.min.js"></script>
+    <script src="<?= base_url() ?>frontend/js/functions.js"></script>
 
     <!-- SPECIFIC SCRIPTS -->
-    <script src="<?=base_url()?>frontend/js/parallax.min.js"></script>
-    <script src="<?=base_url()?>frontend/js/owl-carousel.js"></script>
+    <script src="<?= base_url() ?>frontend/js/parallax.min.js"></script>
+    <script src="<?= base_url() ?>frontend/js/owl-carousel.js"></script>
     <script>
         "use strict";
         $(".team-carousel").owlCarousel({
