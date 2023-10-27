@@ -83,8 +83,15 @@ class CreateEventRequestTable extends Migration
                 'type' => 'VARCHAR',
                 'constraint' => 100,
             ],
+            'approved' => [
+                'type' => 'INT',
+                'constraint' => 1,
+                'default' => 0,
+                'null' => true,
+            ],
             'createdAt' => [
                 'type' => 'DATETIME',
+                'default' => 'CURRENT_TIMESTAMP',
                 'null' => true,
             ],
             'updatedAt' => [

@@ -52,7 +52,11 @@
                 <?php endif; ?>
                 <td><?=$person->createdAt?></td>
                 <td>
+                <?php if($person->approved == 0): ?>
                     <button type="button" class="btn btn-primary btn-sm">Approve</button>
+                    <?php else: ?>
+                        <button type="button" class="btn btn-danger btn-sm">Un Approve</button>
+                   <?php endif; ?>
                 </td>
                
             </tr>

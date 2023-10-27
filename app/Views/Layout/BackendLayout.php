@@ -14,15 +14,15 @@ $user = auth()->user();
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <!-- App favicon -->
-    <link rel="shortcut icon" href="<?= base_url() ?>backend/assets/images/favicon.ico">
+    <!-- <link rel="shortcut icon" href="<?= base_url() ?>backend/assets/images/favicon.ico"> -->
 
     <!-- App css -->
     <link href="<?= base_url() ?>backend/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="<?= base_url() ?>backend/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
     <link href="<?= base_url() ?>backend/assets/css/theme.min.css" rel="stylesheet" type="text/css" />
 
-      <!-- Plugins css -->
-      <link href="<?= base_url() ?>backend/plugins/datatables/dataTables.bootstrap4.css" rel="stylesheet" type="text/css" />
+    <!-- Plugins css -->
+    <link href="<?= base_url() ?>backend/plugins/datatables/dataTables.bootstrap4.css" rel="stylesheet" type="text/css" />
     <link href="<?= base_url() ?>backend/plugins/datatables/responsive.bootstrap4.css" rel="stylesheet" type="text/css" />
     <link href="<?= base_url() ?>backend/plugins/datatables/buttons.bootstrap4.css" rel="stylesheet" type="text/css" />
     <link href="<?= base_url() ?>backend/plugins/datatables/select.bootstrap4.css" rel="stylesheet" type="text/css" />
@@ -63,12 +63,12 @@ $user = auth()->user();
                         </button>
                         <div class="dropdown-menu dropdown-menu-right">
 
-                            <a class="dropdown-item d-flex align-items-center justify-content-between" href="javascript:void(0)">
+                            <!-- <a class="dropdown-item d-flex align-items-center justify-content-between" href="javascript:void(0)">
                                 <span>Profile</span>
                                 <span>
                                     <span class="badge badge-pill badge-warning">1</span>
                                 </span>
-                            </a>
+                            </a> -->
 
                             <a class="dropdown-item d-flex align-items-center justify-content-between" href="<?= base_url('logout') ?>">
                                 <span>Log Out</span>
