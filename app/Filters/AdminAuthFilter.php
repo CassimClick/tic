@@ -25,12 +25,10 @@ class AdminAuthFilter implements FilterInterface
      */
     public function before(RequestInterface $request, $arguments = null)
     {
-        $user = auth()->user();
+       
         if (!auth()->loggedIn()) {
             return redirect()->to('login');
-        } elseif (auth()->loggedIn() && !$user->inGroup('superadmin','companyadmin')) {
-            return redirect()->to('login');
-        }
+        } 
     }
 
     /**

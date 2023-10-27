@@ -22,4 +22,10 @@ class RegistrationModel extends Model
     {
         return $this->registrationTable->insert($data);
     }
+
+    //get all user registration 
+    public function getRegisters(){
+        return $this->registrationTable->select()->get()->getResult();
+    }
+
 }
