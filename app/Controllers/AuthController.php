@@ -46,7 +46,7 @@ class AuthController extends RegisterController
             return redirect()->route('auth-action-show');
         }
 
-        return $this->view('Pages/Backend/Register', $data);
+        return $this->view('Pages/Backend/Auth/Register', $data);
     }
     public function createAccount(): RedirectResponse
     {
@@ -154,7 +154,7 @@ class AuthController extends RegisterController
             return redirect()->route('auth-action-show');
         }
 
-        return $this->view('Pages/Backend/Login',$data);
+        return $this->view('Pages/Backend/Auth/Login',$data);
     }
 
 

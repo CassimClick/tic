@@ -66,7 +66,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-3">
-                    <a href="index-2.html"><img src="<?= base_url() ?>frontend/assets/img/logo.png" alt="" width="49" height="35"></a>
+                    <a href="<?= base_url('') ?>"><img src="<?= base_url() ?>frontend/assets/img/logo.png" alt="" width="49" height="35"></a>
                 </div>
                 <div class="col-9 position-relative">
                     <!-- <div id="social">
@@ -78,7 +78,7 @@
                         </ul>
                     </div> -->
                     <!-- /social -->
-                    <a href="#0" class="cd-nav-trigger">Menu<span class="cd-icon"></span></a>
+                    <!-- <a href="#0" class="cd-nav-trigger">Menu<span class="cd-icon"></span></a> -->
                     <!-- /menu button -->
                     <nav>
                         <ul class="cd-primary-nav">

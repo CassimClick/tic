@@ -26,6 +26,9 @@ $user = auth()->user();
     <link href="<?= base_url() ?>backend/plugins/datatables/responsive.bootstrap4.css" rel="stylesheet" type="text/css" />
     <link href="<?= base_url() ?>backend/plugins/datatables/buttons.bootstrap4.css" rel="stylesheet" type="text/css" />
     <link href="<?= base_url() ?>backend/plugins/datatables/select.bootstrap4.css" rel="stylesheet" type="text/css" />
+    <!-- Sweet Alerts css -->
+    <link href="<?= base_url() ?>backend/plugins/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
+    <link href="<?= base_url() ?>backend/plugins/switchery/switchery.min.css" rel="stylesheet" type="text/css" />
 
 </head>
 
@@ -50,7 +53,8 @@ $user = auth()->user();
 
 
                     <div class="dropdown d-inline-block">
-
+                        <!-- this holds a hidden input field for csrf token to be submitted  with each form -->
+                        <?= tokenField() ?>
                     </div>
 
 
@@ -164,10 +168,19 @@ $user = auth()->user();
     <script src="<?= base_url() ?>backend/plugins/datatables/dataTables.select.min.js"></script>
     <script src="<?= base_url() ?>backend/plugins/datatables/pdfmake.min.js"></script>
     <script src="<?= base_url() ?>backend/plugins/datatables/vfs_fonts.js"></script>
+   
     <!-- third party js ends -->
 
     <!-- Datatables init -->
     <script src="<?= base_url() ?>backend/assets/pages/datatables-demo.js"></script>
+
+    <!-- Sweet Alerts Js-->
+    <script src="<?= base_url() ?>backend/plugins/sweetalert2/sweetalert2.min.js"></script>
+
+    <!-- Sweet Alerts Js-->
+    <script src="<?= base_url() ?>backend/assets/pages/sweet-alert-demo.js"></script>
+    <!-- Custom Js -->
+
 
 </body>
 

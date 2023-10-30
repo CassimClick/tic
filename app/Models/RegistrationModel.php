@@ -24,8 +24,22 @@ class RegistrationModel extends Model
     }
 
     //get all user registration 
-    public function getRegisters(){
+    public function getRegisters()
+    {
         return $this->registrationTable->select()->get()->getResult();
     }
 
+    //get single reg data
+    public function getRegister($id)
+    {
+        return $this->registrationTable->select()->where(['id' => $id])->get()->getRow();
+    }
+
+    //updating application approval status
+    public function updateRegistration($id, $approvalState)
+    {
+        return $this->registrationTable->set(['approved' => $approvalState])->where(['id' => $id])->update();
+    }
+
+   
 }

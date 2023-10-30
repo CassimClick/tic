@@ -4,7 +4,7 @@
      <div data-simplebar class="h-100">
 
          <div class="navbar-brand-box">
-             <a href="<?= base_url() ?>" class="logo">
+             <a href="<?= base_url('admin/dashboard') ?>" class="logo">
 
                  <span>
                      TIC
@@ -19,13 +19,13 @@
                  <li class="menu-title">Menu</li>
 
                  <li>
-                     <a href="index-2.html" class="waves-effect"><i class="feather-airplay"></i><span>Dashboard</span></a>
+                     <a href="<?= base_url('admin/dashboard') ?>" class="waves-effect"><i class="feather-airplay"></i><span>Dashboard</span></a>
                  </li>
 
 
-                 <!-- <li>
+                 <li>
                      <a href="<?= base_url('admin/registrations') ?>" class=" waves-effect"><i class="feather-users"></i><span>Registrations</span></a>
-                 </li> -->
+                 </li>
 
                  <!-- <li>
                      <a href="<?= base_url('admin/report') ?>" class=" waves-effect"><i class="feather-file"></i><span>Report</span></a>

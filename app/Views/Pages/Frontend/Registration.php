@@ -255,7 +255,7 @@
 				swal({
 					text: msg,
 					//text: ,
-					icon: status == 1 ? 'success' : warning,
+					icon: status == 1 ? 'success' : 'warning',
 				});
 			})
 

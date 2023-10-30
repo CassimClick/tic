@@ -15,29 +15,37 @@
         <div class="container margin_60_35">
             <div class="row">
                 <div class="col-lg-6">
-                    <h2 class="nomargin_top">Welcome</h2>
+                    <h2 class="nomargin_top"> INVITATION TO PARTICIPATE IN THE TANZANIA — NETHERLANDS
+                        I BUSINESS AND INVESTMENT FORUM </h2>
                     <p>
-                        You are warmly welcome to invest in Tanzania, one of the fastest-growing economies in Africa. Tanzania offers a friendly business environment, has abundant natural resources, and endless opportunities for investors.
+                        Tanzania Investment Centre (TIC) in collaboration with the Embassy ofTanzania
+                        in Netherlands and other respective stakeholders have organized the Tanzania
+                        Netherlands Business and Investment Forum to be held from 14t1 to 15th
+                        November 2023, The Hague Netherlands.
+                        The forum will focus on the promotion of Business and Investment
+                        Opportunities in the Agriculture and Agro business, Livestock and Fisheries,
+                        Energy, Infrastructure and Construction sectors.
+                        The program of the forum will include B2B discussions and Site visits to the
+                        industrial areas around the sectors of focus.
 
-                        The country’s sustained economic growth of 7% during the past decade, has been rewarded by climbing a ladder of development from a low-income to middle-income-country effectively July 1st, 2020 (World Bank, 2020). This achievement was witnessed five years before the time anticipated in the country’s Vision 2025 Strategy.
-
-                        Consequently, notable achievements have been realized in various sectors including infrastructure, social services, minerals, and management of natural resources, land, and environment as well as good governance.
-
-                        To sustain the economic growth success, the Government under the firm leadership of Her Excellency Samia Suluhu Hassan, President of the United Republic of Tanzania is implementing an industrial driven economy, which emphasizes on the attraction of investments in identified key priority sectors.
-
-                        The manufacturing sector has been given the highest priority in attracting investors in Tanzania, particularly the establishment of industries which utilize domestic available raw materials such as processing of various agricultural products (sugarcane, cashew nuts, cotton, processing of edible oil from sunflower, sesame, cotton seeds, groundnuts, oil palm, etc), fruits and vegetable farming for the export market, fishing and fish processing, livestock value chain, mining and mineral processing, woodworks, manufacturing of pharmaceutical products and medical devices.
-
-                        Due to the maintenance of consistent conducive economic governance reforms, Tanzania has attained an attractive global ranking in different aspects. According to the RMB report on “Where to Invest in Africa 2019” Tanzania is ranked 7th, out of 54 countries. Most importantly, Tanzania boasts as a country of peace and tranquility as confirmed by the 2019 Global Peace Index which measures the level of peace and stability. The report placed Tanzania at the 54th position worldwide and ranked the first among East African Countries.
+                        There are no participation fees in any of the events in the program of this
+                        Business and Investment Forum. Every Participants will have to bear travel and
+                        accommodation cost.
+                    </p>
+                    <br>
+                    <p>
+                        If you are interested to participate in the forum, Please register your company
+                        and list of participants through this link <a href="<?= base_url('registration') ?>">Registration</a>;
                     </p>
                 </div>
                 <div class="col-lg-5 ml-lg-5 add_top_30">
-                    <img src="<?=base_url('frontend/assets/img/image1.jpg')?>" alt="" class="img-fluid">
+                    <img src="<?= base_url('frontend/assets/img/image1.jpg') ?>" alt="" class="img-fluid">
                 </div>
             </div>
             <!-- End row -->
         </div>
     </div>
-  
+
     <!-- End container -->
 </main>
 

@@ -26,6 +26,10 @@ $routes->group('admin', ['filter' => 'AdminAuthFilter'], function ($routes) {
     $adminRoutes['deleteUser'] = 'UserController::deleteUser';
     $adminRoutes['sendMail'] = 'AdminController::sendMail';
     $adminRoutes['updateUser'] = 'UserController::updateUser';
+    
+    
+    $adminRoutes['toggleApproval'] = 'AdminController::toggleApproval';
+    $adminRoutes['registrations'] = 'AdminController::registrations';
   
 
     $routes->map($adminRoutes);

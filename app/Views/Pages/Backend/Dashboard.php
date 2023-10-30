@@ -1,68 +1,93 @@
 <?= $this->extend('Layout/BackendLayout') ?>
 <?= $this->section('content') ?>
-<table id="basic-datatable" class="table dt-responsive nowrap table-sm">
-    <thead>
-        <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Company Name</th>
-            <th>Phone Number</th>
-            <th>Alternative Phone Number</th>
-            <th>Passport Number</th>
-            <th>Nida Number</th>
-            <th>Nationality Type</th>
-            <th>country</th>
-            <th>AreaOf Interest</th>
-            <th>email</th>
-            <th>Physical Address</th>
-            <th>TypeOf Business</th>
-            <th>Sector</th>
-            <th>Registration Body</th>
-            <th>Status</th>
-            <th>Date</th>
-            <th>Action</th>
-           
-          
-        </tr>
-    </thead>
+<style>
+    .icon {
+        color: #fff;
+        font-size: 3rem;
+    }
+</style>
+<div class="row">
+    <div class="col-md-6 col-xl-4">
+        <div class="card bg-primary border-primary">
+            <div class="card-body">
+                <div class="mb-4">
+
+                    <h5 class="card-title mb-0 text-white">All Registrations</h5>
+                </div>
+                <div class="row d-flex align-items-center mb-4">
+                    
+                    <div class="col-8">
+                        <h1 class="d-flex text-left text-white mb-0">
+                            <?= $allRegistrations ?>
+                        </h1>
+                    </div>
+                    <div class="col-4 text-right">
+                        <i class="fas fa-users icon"></i>
+
+                    </div>
 
 
-    <tbody>
-        <?php foreach($registers as $person): ?>
-            <tr>
-                <td><?=$person->firstName?></td>
-                <td><?=$person->middleName?></td>
-                <td><?=$person->companyName?></td>
-                <td><?=$person->phoneNumber?></td>
-                <td><?=$person->alternativePhoneNumber?></td>
-                <td><?=$person->passportNumber?></td>
-                <td><?=$person->nidaNumber?></td>
-                <td><?=$person->nationalityType?></td>
-                <td><?=$person->country?></td>
-                <td><?=$person->areaOfInterest?></td>
-                <td><?=$person->email?></td>
-                <td><?=$person->physicalAddress?></td>
-                <td><?=$person->typeOfBusiness?></td>
-                <td><?=$person->sector?></td>
-                <td><?=$person->registrationBody?></td>
-                <?php if($person->approved == 1): ?>
-                    <td>Approved</td>
-                <?php else: ?>
-                   <td> Not Approved</td>
-                <?php endif; ?>
-                <td><?=$person->createdAt?></td>
-                <td>
-                <?php if($person->approved == 0): ?>
-                    <button type="button" class="btn btn-primary btn-sm">Approve</button>
-                    <?php else: ?>
-                        <button type="button" class="btn btn-danger btn-sm">Un Approve</button>
-                   <?php endif; ?>
-                </td>
-               
-            </tr>
-        <?php endforeach; ?>
-        
-    
-    </tbody>
-</table>
+                </div>
+
+
+            </div>
+        </div>
+    </div> <!-- end col-->
+
+    <div class="col-md-6 col-xl-4">
+        <div class="card bg-success border-success">
+            <div class="card-body">
+                <div class="mb-4">
+
+                    <h5 class="card-title mb-0 text-white">Approved</h5>
+                </div>
+                <div class="row d-flex align-items-center mb-4">
+                    
+                    <div class="col-8">
+                        <h1 class="d-flex text-left text-white mb-0">
+                            <?= $approved ?>
+                        </h1>
+                    </div>
+                    <div class="col-4 text-right">
+                        <i class="fas fa-user-check icon"></i>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+        </div>
+    </div> <!-- end col-->
+
+    <div class="col-md-6 col-xl-4">
+        <div class="card bg-danger border-warning">
+            <div class="card-body">
+                <div class="mb-4">
+
+                    <h5 class="card-title mb-0 text-white">Un-Approved</h5>
+                </div>
+                <div class="row d-flex align-items-center mb-4">
+                    
+                    <div class="col-8">
+                        <h1 class="d-flex text-left text-white mb-0">
+                            <?= $unApproved ?>
+                        </h1>
+                    </div>
+                    <div class="col-4 text-right">
+                        <i class="fas fa-user-times icon"></i>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+        </div>
+    </div> <!-- end col-->
+
+
+</div>
 <?= $this->endSection() ?>
