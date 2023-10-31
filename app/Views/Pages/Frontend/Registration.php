@@ -244,6 +244,7 @@
 				body: formData
 			}).then(res => res.json()).then(data => {
 				submitDone(e.submitter)
+				registrationForm.reset()
 				console.log(data)
 				const {
 					token,
