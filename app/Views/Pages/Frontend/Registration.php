@@ -52,7 +52,7 @@
 								<label>Sector</label>
 								<select class="form-control" name="sector" required>
 									<option disabled selected value="">--Select Sector</option>
-									<option value="Pubic">Pubic</option>
+									<option value="Pubic">Public</option>
 									<option value="Private">Private</option>
 								</select>
 							</div>
@@ -72,8 +72,8 @@
 							<div class="form-group">
 								<label for="">Nationality Type</label>
 								<select class="form-control" name="nationalityType" onchange="switchNationality(this.value)" required>
-									<option disabled selected value="">--Select Nationality</option>
-									<option value="Tanzanian">Tanzanian</option>
+									<option disabled selected  value="">--Select Nationality</option>
+									<option  value="Tanzanian">Tanzanian</option>
 									<option value="Foreign">Foreign</option>
 								</select>
 							</div>
@@ -85,7 +85,7 @@
 									<option disabled selected value="">--Select Registration Body</option>
 									<option value="TIC">TIC</option>
 									<option value="TCCIA">TCCIA</option>
-									<option value="Other Bodies Registration ">Other Bodies Registration</option>
+									<option value="Other Registration Bodies">Other Bodies Registration</option>
 								</select>
 							</div>
 						</div>
@@ -100,9 +100,9 @@
 								<label for="">Country </label>
 								<select class="form-control" name="country" required>
 									<option disabled selected value="">--Select Country</option>
-									<option value="Algeria">Algeria</option>
-									<option value="Tanzanian">Tanzanian</option>
-									<option value="Canada">Canada</option>
+									<?php foreach(countries() as $country): ?>
+										<option value="<?=$country ?>"><?=$country ?></option>
+									<?php endforeach; ?>
 								</select>
 							</div>
 						</div>
