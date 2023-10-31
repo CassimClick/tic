@@ -27,9 +27,9 @@
                      <a href="<?= base_url('admin/registrations') ?>" class=" waves-effect"><i class="feather-users"></i><span>Registrations</span></a>
                  </li>
 
-                 <!-- <li>
-                     <a href="<?= base_url('admin/report') ?>" class=" waves-effect"><i class="feather-file"></i><span>Report</span></a>
-                 </li> -->
+                 <li>
+                     <a href="<?= base_url('admin/reports') ?>" class=" waves-effect"><i class="feather-file"></i><span>Report</span></a>
+                 </li>
 
 
 

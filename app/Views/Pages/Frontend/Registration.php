@@ -70,7 +70,7 @@
 						</div>
 						<div class="col-md-6 col-sm-6">
 							<div class="form-group">
-								<label for="">Nationality Type </label>
+								<label for="">Nationality Type</label>
 								<select class="form-control" name="nationalityType" onchange="switchNationality(this.value)" required>
 									<option disabled selected value="">--Select Nationality</option>
 									<option value="Tanzanian">Tanzanian</option>
@@ -153,7 +153,7 @@
 								<input type="text" id="verify_contact" class=" form-control" placeholder=" 3 + 1 =">
 							</div> -->
 							<p>
-								<button type="submit" class="btn_1 add_bottom_15" >
+								<button type="submit" class="btn btn-primary btn-sm " >
 									<div class="spinner-border spinner-border-sm" id="spinner" role="status" style="display: none;"></div>
 									Submit
 								</button>

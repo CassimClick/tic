@@ -28,6 +28,11 @@ class RegistrationModel extends Model
     {
         return $this->registrationTable->select()->get()->getResult();
     }
+    //get all user registration 
+    public function getReport($params)
+    {
+        return $this->registrationTable->select()->where($params)->get()->getResult();
+    }
 
     //get single reg data
     public function getRegister($id)

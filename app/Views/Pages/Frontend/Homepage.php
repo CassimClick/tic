@@ -5,7 +5,7 @@
     <div id="sub_content_in">
         <h1>Tanzania Investment Centre (TIC)</h1>
         <p></p>
-        <a href="<?= base_url('registration') ?>" type="button" class="btn_1 add_bottom_15">Register Now</a>
+        <a href="<?= base_url('registration') ?>"  class="btn btn-primary btn-sm">Register Now</a>
     </div>
 </section>
 <!-- /section -->

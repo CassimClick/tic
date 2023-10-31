@@ -96,6 +96,7 @@ class CreateEventRequestTable extends Migration
             ],
             'updatedAt' => [
                 'type' => 'DATETIME',
+                'default' => 'CURRENT_TIMESTAMP',
                 'null' => true,
             ],
         ]);

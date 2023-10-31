@@ -22,11 +22,11 @@ class AdminModel extends Model
         return $this->companyTable->insert($data);
     }
 
-    public function getCompanies(){
-        return $this->companyTable->select()->get()->getResult();
-    }
+   
 
     public function findCompany($companyId){
         return $this->companyTable->select()->where(['companyId' =>$companyId])->get()->getRow();
     }
+
+
 }

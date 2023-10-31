@@ -84,8 +84,8 @@ $user = auth()->user();
             </div>
         </header>
 
+        
         <?= $this->include('Layout/SideMenu') ?>
-
         <!-- ============================================================== -->
         <!-- Start right Content here -->
         <!-- ============================================================== -->
@@ -113,11 +113,10 @@ $user = auth()->user();
                     <!-- end page title -->
 
                 </div> <!-- container-fluid -->
-            </div>
-            <!-- End Page-content -->
-            <div class="container-fluid">
                 <?= $this->renderSection('content') ?>
             </div>
+            <!-- End Page-content -->
+           
 
             <footer class="footer">
                 <div class="container-fluid">

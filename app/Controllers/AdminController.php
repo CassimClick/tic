@@ -45,6 +45,13 @@ class AdminController extends BaseController
         return view('Pages/Backend/Registrations', $data);
     }
 
+    public function reports()
+    {
+        $data['title'] = 'Report';
+
+        return view('Pages/Backend/Reports', $data);
+    }
+
 
     public function toggleApproval()
     {
@@ -134,58 +141,107 @@ class AdminController extends BaseController
 
 
 
-    public function getCompanies()
+    public function generateReports()
     {
-        $companies = $this->adminModel->getCompanies();
-        $tr = '';
-        foreach ($companies as $company) {
-
-
-
-            $tr .= <<<HTML
-                    <tr>
-                    <td>$company->companyName</td>
-                    <td>$company->region</td>
-                    <td>$company->phoneNumber</td>
-                    <td>$company->email</td>
-                    <td><span class="badge bg-label-primary me-1">Active</span></td>
-                    <td>
-                        <button type="button" class="btn rounded-pill btn-sm btn-icon btn-primary" onclick="editCompany('$company->companyId')">
-                            <span class="far fa-edit"></span>
-                        </button>
-                        <button type="button" class="btn rounded-pill  btn-sm btn-icon btn-danger" onclick="deleteCompany('$company->companyId')">
-                            <span class="far fa-trash-alt"></span>
-                        </button>
-
-
-                    </td>
-                </tr>   
-            HTML;
-        }
-
-        $table = <<<HTML
-            <table id="dataTable" class="table shorting">
-             <thead class="table-light">
-                 <tr>
-                     <th>Company Name</th>
-                     <th>Region</th>
-                     <th>Phone Number</th>
-                     <th>Email</th>
-                     <th>Status</th>
-                     <th>Action</th>
-
-                    </tr>
-             </thead>
-             <tbody >
-               $tr
-             
-             </tbody>
-         </table>   
-         HTML;
-
-
-
-        return $table;
+         try {
+            $status = $this->getVariable('status');
+            $month = $this->getVariable('month');
+            $year = $this->getVariable('year');
+            
+    
+            $params=[
+                'approved' => $status,
+                'MONTH(createdAt)' => $month,
+                'YEAR(createdAt)' => $year,
+            ];
+            $registersReport = $this->registrationModel->getReport($params);
+            //  return $this->response->setJSON([
+            //    'status' => 0,
+            //    'data' => $registersReport,
+            //    'token' => $this->token,
+            //    'params' => $params,
+            //  ]);
+            //  exit;
+            $tr = '';
+            foreach ($registersReport as $report) {
+    
+                $status  = $report->approved == 1? 'Approved' : 'Un-Approved';
+    
+                $tr .= <<<HTML
+                        <tr>
+                        <td>$report->firstName </td>
+                        <td>$report->middleName </td>
+                        <th>$status</th>
+                        <td>$report->email </td>
+                        <td>$report->companyName </td>
+                        <td>$report->phoneNumber </td>
+                        <td>$report->alternativePhoneNumber </td>
+                        <td>$report->passportNumber </td>
+                        <td>$report->nidaNumber </td>
+                        <td>$report->nationalityType </td>
+                        <td>$report->country </td>
+                        <td>$report->areaOfInterest </td>
+            
+                        <td>$report->physicalAddress </td>
+                        <td>$report->typeOfBusiness </td>
+                        <td>$report->sector </td>
+                        <td>$report->registrationBody </td>
+                        <td>$report->registrationBody </td>
+                     
+                        <td>$report->createdAt </td>
+                        
+                    </tr>   
+                HTML;
+            }
+    
+            $report = <<<HTML
+                <table id="basic-datatable" class="table dt-responsive nowrap table-sm">
+                 <thead class="table-light">
+                     <tr>
+                       <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Status</th>
+                        <th>email</th>
+                        <th>Company Name</th>
+                        <th>Phone Number</th>
+                        <th>Alternative Phone Number</th>
+                        <th>Passport Number</th>
+                        <th>Nida Number</th>
+                        <th>Nationality Type</th>
+                        <th>country</th>
+                        <th>AreaOf Interest</th>
+                        <th>Physical Address</th>
+                        <th>TypeOf Business</th>
+                        <th>Sector</th>
+                        <th>Registration Body</th>
+                        <th>Status</th>
+                        <th>Date</th>
+    
+                        </tr>
+                 </thead>
+                 <tbody >
+                   $tr
+                 
+                 </tbody>
+             </table>   
+             HTML;
+    
+    
+    
+              $response = [
+               'report' => $report,
+               'token' => $this->token,
+               'params' => $params,
+             ];
+                } catch (\Throwable $th) {
+                    $response = [
+                        'status' => 0,
+                        'msg' => $th->getMessage(),
+                        'token' => $this->token
+                    ];
+                }
+            return $this->response->setJSON($response);
+        //  exit;
     }
 
     public function sendMail()
