@@ -2,7 +2,7 @@
 <?= $this->section('content') ?>
 <section class="parallax_window_in" data-parallax="scroll" data-image-src="<?= base_url('frontend/assets/img/office2.jpg') ?>" data-natural-width="1400" data-natural-height="800">
 	<div id="sub_content_in">
-		<h1>Registration</h1>
+		<h1 class="text-light">Registration for Tanzania-Netherlands Business Investment Forum</h1>
 		<!-- <p>"Usu habeo equidem sanctus no ex melius labitur conceptam eos"</p> -->
 		<!-- <a href="<?= base_url('registration') ?>" type="button" class="btn_1 add_bottom_15">Register Now</a> -->
 	</div>
@@ -49,11 +49,24 @@
 						</div>
 						<div class="col-md-6 col-sm-6">
 							<div class="form-group">
-								<label>Sector</label>
-								<select class="form-control" name="sector" required>
-									<option disabled selected value="">--Select Sector</option>
-									<option value="Pubic">Public</option>
+								<label>Sector(Eg, Mining,Agriculture etc)</label>
+								<input type="text" id="sector" name="sector" class="form-control" placeholder="Sector" required>
+							</div>
+						</div>
+						<div class="col-md-6 col-sm-6">
+							<div class="form-group">
+								<label>Area of Interest</label>
+								<input type="text" id="areaOfInterest" name="areaOfInterest" class="form-control" placeholder="" required>
+							</div>
+						</div>
+						<div class="col-md-6 col-sm-6">
+							<div class="form-group">
+								<label>Representative </label>
+								<select class="form-control" name="representative" required>
+									<option disabled selected value="">--Select Representative </option>
+									<option value="Government">Government</option>
 									<option value="Private">Private</option>
+
 								</select>
 							</div>
 						</div>
@@ -72,13 +85,13 @@
 							<div class="form-group">
 								<label for="">Nationality Type</label>
 								<select class="form-control" name="nationalityType" onchange="switchNationality(this.value)" required>
-									<option disabled selected  value="">--Select Nationality</option>
-									<option  value="Tanzanian">Tanzanian</option>
+									<option disabled selected value="">--Select Nationality</option>
+									<option value="Tanzanian">Tanzanian</option>
 									<option value="Foreign">Foreign</option>
 								</select>
 							</div>
 						</div>
-						<div class="col-md-6 col-sm-6">
+						<!-- <div class="col-md-6 col-sm-6">
 							<div class="form-group">
 								<label for="">Registration Body</label>
 								<select class="form-control" name="registrationBody" required>
@@ -88,7 +101,7 @@
 									<option value="Other Registration Bodies">Other Bodies Registration</option>
 								</select>
 							</div>
-						</div>
+						</div> -->
 						<div class="col-md-6 col-sm-6" id="nida" style="display: none;">
 							<div class="form-group">
 								<label>NIDA Number</label>
@@ -100,8 +113,8 @@
 								<label for="">Country </label>
 								<select class="form-control" name="country" required>
 									<option disabled selected value="">--Select Country</option>
-									<?php foreach(countries() as $country): ?>
-										<option value="<?=$country ?>"><?=$country ?></option>
+									<?php foreach (countries() as $country) : ?>
+										<option value="<?= $country ?>"><?= $country ?></option>
 									<?php endforeach; ?>
 								</select>
 							</div>
@@ -153,7 +166,7 @@
 								<input type="text" id="verify_contact" class=" form-control" placeholder=" 3 + 1 =">
 							</div> -->
 							<p>
-								<button type="submit" class="btn btn-primary btn-sm " >
+								<button type="submit" class="btn btn-primary btn-sm ">
 									<div class="spinner-border spinner-border-sm" id="spinner" role="status" style="display: none;"></div>
 									Submit
 								</button>
@@ -244,13 +257,15 @@
 				body: formData
 			}).then(res => res.json()).then(data => {
 				submitDone(e.submitter)
-				registrationForm.reset()
+
 				console.log(data)
 				const {
 					token,
 					msg,
 					status
 				} = data
+
+				if (status == 1) registrationForm.reset()
 
 				document.querySelector('.token').value = token
 				swal({

@@ -44,8 +44,10 @@ class RegistrationController extends BaseController
                 'country' => $nationality == 'Tanzanian' ? 'Tanzania' : $this->getVariable('country'),
                 'nidaNumber' => $this->getVariable('nidaNumber'),
                 'passportNumber' => $this->getVariable('passportNumber'),
+                'areaOfInterest' => $this->getVariable('areaOfInterest'),
                 'email' => $this->getVariable('email'),
-                'registrationBody' => $this->getVariable('registrationBody'),
+                'representative' => $this->getVariable('representative'),
+                // 'registrationBody' => $this->getVariable('registrationBody'),
                 'typeOfBusiness' => $this->getVariable('typeOfBusiness'),
                 'physicalAddress' => $this->getVariable('physicalAddress'),
             ];
