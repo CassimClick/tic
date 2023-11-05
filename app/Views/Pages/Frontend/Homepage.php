@@ -35,7 +35,7 @@
                     <br>
                     <p>
                         If you are interested to participate in the forum, Please register your company
-                        and list of participants through this link <a href="<?= base_url('registration') ?>">Registration</a>;
+                         through the link <a href="<?= base_url('registration') ?>">Registration</a>;
                     </p>
                 </div>
                 <div class="col-lg-5 ml-lg-5 add_top_30">
