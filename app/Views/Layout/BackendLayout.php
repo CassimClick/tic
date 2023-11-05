@@ -9,12 +9,12 @@ $user = auth()->user();
     <meta charset="utf-8" />
     <title><?= $title ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
-    <meta content="MyraStudio" name="author" />
+    <meta content="Tanzania Investment Center Forum" name="description" />
+    <meta content="TIC" name="author" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <!-- App favicon -->
-    <!-- <link rel="shortcut icon" href="<?= base_url() ?>backend/assets/images/favicon.ico"> -->
+    <link rel="shortcut icon" href="<?=  base_url('backend/assets/images/logo.png') ?>">
 
     <!-- App css -->
     <link href="<?= base_url() ?>backend/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -26,6 +26,10 @@ $user = auth()->user();
     <link href="<?= base_url() ?>backend/plugins/datatables/responsive.bootstrap4.css" rel="stylesheet" type="text/css" />
     <link href="<?= base_url() ?>backend/plugins/datatables/buttons.bootstrap4.css" rel="stylesheet" type="text/css" />
     <link href="<?= base_url() ?>backend/plugins/datatables/select.bootstrap4.css" rel="stylesheet" type="text/css" />
+    <!-- Plugins css -->
+    <link href="<?= base_url() ?>backend/plugins/quill/quill.core.css" rel="stylesheet" type="text/css" />
+    <link href="<?= base_url() ?>backend/plugins/quill/quill.bubble.css" rel="stylesheet" type="text/css" />
+    <link href="<?= base_url() ?>backend/plugins/quill/quill.snow.css" rel="stylesheet" type="text/css" />
     <!-- Sweet Alerts css -->
     <link href="<?= base_url() ?>backend/plugins/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
     <link href="<?= base_url() ?>backend/plugins/switchery/switchery.min.css" rel="stylesheet" type="text/css" />
@@ -84,7 +88,7 @@ $user = auth()->user();
             </div>
         </header>
 
-        
+
         <?= $this->include('Layout/SideMenu') ?>
         <!-- ============================================================== -->
         <!-- Start right Content here -->
@@ -116,7 +120,7 @@ $user = auth()->user();
                 <?= $this->renderSection('content') ?>
             </div>
             <!-- End Page-content -->
-           
+
 
             <footer class="footer">
                 <div class="container-fluid">
@@ -142,9 +146,9 @@ $user = auth()->user();
     <!-- Overlay-->
     <div class="menu-overlay"></div>
 
-
     <!-- jQuery  -->
     <script src="<?= base_url() ?>backend/assets/js/jquery.min.js"></script>
+
     <script src="<?= base_url() ?>backend/assets/js/bootstrap.bundle.min.js"></script>
     <script src="<?= base_url() ?>backend/assets/js/metismenu.min.js"></script>
     <script src="<?= base_url() ?>backend/assets/js/waves.js"></script>
@@ -167,7 +171,7 @@ $user = auth()->user();
     <script src="<?= base_url() ?>backend/plugins/datatables/dataTables.select.min.js"></script>
     <script src="<?= base_url() ?>backend/plugins/datatables/pdfmake.min.js"></script>
     <script src="<?= base_url() ?>backend/plugins/datatables/vfs_fonts.js"></script>
-   
+
     <!-- third party js ends -->
 
     <!-- Datatables init -->
@@ -179,6 +183,18 @@ $user = auth()->user();
     <!-- Sweet Alerts Js-->
     <script src="<?= base_url() ?>backend/assets/pages/sweet-alert-demo.js"></script>
     <!-- Custom Js -->
+
+    <!-- Plugins js -->
+    <script src="<?= base_url() ?>backend/assets/js/metismenu.min.js"></script>
+    <script src="<?= base_url() ?>backend/assets/js/waves.js"></script>
+    <script src="<?= base_url() ?>backend/assets/js/simplebar.min.js"></script>
+
+    <!-- Plugins js -->
+    <script src="<?= base_url() ?>backend/plugins/katex/katex.min.js"></script>
+    <script src="<?= base_url() ?>backend/plugins/quill/quill.min.js"></script>
+
+    <!-- Init js-->
+    <script src="<?= base_url() ?>backend/assets/pages/quilljs-demo.js"></script>
 
 
 </body>

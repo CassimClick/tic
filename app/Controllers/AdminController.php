@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\AdminModel;
+use App\Libraries\PdfLibrary;
 use App\Models\RegistrationModel;
 use App\Controllers\BaseController;
 
@@ -53,6 +54,94 @@ class AdminController extends BaseController
     }
 
 
+    public function batchToggleApproval()
+    {
+        try {
+            $approvalState = $this->getVariable('approvalState');
+            $registerIds = $this->getVariable('registerIds');
+            $text = $approvalState == 1 ? 'Approved' : 'Un-Approved';
+
+
+            //  return $this->response->setJSON([
+            //    'status' => 0,
+            //    'data' => $registerIds,
+            //    'token' => $this->token
+            //  ]);
+            //  exit;
+
+            $this->registrationModel->batchUpdateRegistration($registerIds, $approvalState);
+            $registeredMembers = $this->registrationModel->getRegistersByIds($registerIds);
+
+
+          
+
+            
+            $registers = array_map(function($reg){
+                return (object)[
+                    'name' => $reg->firstName . ' '.$reg->lastName,
+                    'email' => $reg->email
+                ];
+            },$registeredMembers);
+
+            
+            
+            if($approvalState == 1){
+                foreach ($registers as $register) {
+                    $data['name'] = $register->name;
+                    
+                $message = view('Pages/EmailTemplate', $data);
+                // ================Email configurations==============
+                $this->email->setTo($register->email);
+                $this->email->setSubject('REGISTRATION VERIFICATION');
+                $this->email->setMessage($message);
+                $this->email->send();
+                }
+              }
+
+
+
+
+            if ($approvalState == 1) {
+
+             
+                    $response = [
+                        'status' => 1,
+                        'approval' => $text,
+                        // 'data' => $register,
+                        'msg' => 'Application is Approved',
+                        'token' => $this->token,
+                        'approvalState' => $approvalState,
+                       
+                        'text' => $text,
+                    ];
+                
+              
+            }else{
+                $response = [
+                    'status' => 1,
+                    'approval' => $text,
+                    // 'data' => $register,
+                    'msg' => 'Application is Un-Approved',
+                    'token' => $this->token,
+                    'approvalState' => $approvalState,
+                
+                    'text' => $text,
+                ];
+            }
+
+
+        } catch (\Throwable $th) {
+            $response = [
+                'status' => 0,
+                'msg' => $th->getMessage(),
+                'trace' => $th->getTrace(),
+                'token' => $this->token,
+                'approvalState' => $approvalState,
+
+            ];
+        }
+        return $this->response->setJSON($response);
+    }
     public function toggleApproval()
     {
         try {
@@ -139,18 +228,21 @@ class AdminController extends BaseController
     }
 
 
+ 
+
+
 
 
     public function generateReports()
     {
          try {
-            $status = $this->getVariable('status');
+            $approvalState = $this->getVariable('approvalState');
             $month = $this->getVariable('month');
             $year = $this->getVariable('year');
             
     
             $params=[
-                'approved' => $status,
+                'approved' => $approvalState,
                 'MONTH(createdAt)' => $month,
                 'YEAR(createdAt)' => $year,
             ];
@@ -226,12 +318,13 @@ class AdminController extends BaseController
              </table>   
              HTML;
     
-    
+            $link = base_url("admin/downloadReport/$approvalState/$month/$year");
     
               $response = [
                'report' => $report,
                'token' => $this->token,
                'params' => $params,
+               'link' => $link
              ];
                 } catch (\Throwable $th) {
                     $response = [
@@ -244,9 +337,23 @@ class AdminController extends BaseController
         //  exit;
     }
 
-    public function sendMail()
-    {
-        $msg = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxLorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo, mollitia.';
-        sendEmail('cassims44@gmail.com', 'Hello World', $msg);
+    public function downloadReport($approvalState,$month,$year){
+
+        $monthName = date('F', mktime(0, 0, 0, $month, 1));
+        
+        $state = $approvalState == 1 ? "Approved": "Un-Approved";
+        $title = "$state Applicants report $monthName $year";
+        $params=[
+            'approved' => $approvalState,
+            'MONTH(createdAt)' => $month,
+            'YEAR(createdAt)' => $year,
+        ];
+        $data['registers'] = $this->registrationModel->getReport($params);
+        
+        $pdfLibrary = new PdfLibrary();
+        $pdfLibrary->renderPdf(orientation: 'L', view: 'ReportTemplates/ReportPdf', data: $data, title: $title);
+
     }
+
+
 }

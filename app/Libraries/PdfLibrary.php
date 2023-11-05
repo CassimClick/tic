@@ -10,11 +10,11 @@ class PdfLibrary
     {
         
         $year = date('Y');
-        $companyNme = company()->companyName;
+       
         $pdf = new Mpdf(['orientation' => $orientation]);
         // $pdf->SetWatermarkImage('assets/img/logo1.jpg', 0.4, [50, 40]);
-        $footer = "<p style='text-align: center;'>$companyNme &copy; $year </p>";
-     
+        $footer = "<p style='text-align: center;'>Tanzania investment Center &copy; $year </p>";
+        $data['title'] = $title;
         
         $pdf->SetHTMLFooter($footer);
         $pdf->showWatermarkImage = true;

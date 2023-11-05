@@ -29,6 +29,11 @@ class RegistrationModel extends Model
         return $this->registrationTable->select()->get()->getResult();
     }
     //get all user registration 
+    public function getRegistersByIds($ids)
+    {
+        return $this->registrationTable->select()->whereIn('id',$ids)->get()->getResult();
+    }
+    //get all user registration 
     public function getReport($params)
     {
         return $this->registrationTable->select()->where($params)->get()->getResult();
@@ -44,6 +49,11 @@ class RegistrationModel extends Model
     public function updateRegistration($id, $approvalState)
     {
         return $this->registrationTable->set(['approved' => $approvalState])->where(['id' => $id])->update();
+    }
+    //updating application approval status
+    public function batchUpdateRegistration($ids, $approvalState)
+    {
+        return $this->registrationTable->set(['approved' => $approvalState])->whereIn('id' , $ids)->update();
     }
 
    

@@ -36,130 +36,188 @@
         }
 
     }
+
+    #check {
+        transform: scale(1.3);
+    }
 </style>
-<table id="basic-datatable" class="table dt-responsive nowrap table-sm">
-    <thead>
-        <tr>
-            <!-- <th>#</th> -->
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Company Name</th>
-            <th>Phone Number</th>
-            <th>Alternative Phone Number</th>
-            <th>Passport Number</th>
-            <th>Nida Number</th>
-            <th>Nationality Type</th>
-            <th>country</th>
-            <th>AreaOf Interest</th>
-            <th>email</th>
-            <th>Physical Address</th>
-            <th>TypeOf Business</th>
-            <th>Sector</th>
-            <th>Registration Body</th>
-            <th>Status</th>
-            <th>Date</th>
-            <th>Action</th>
 
 
-        </tr>
-    </thead>
+<div class="card">
+    <div class="card-header">
+        <div class="col-6">
+            <div class="row form-inline">
+                <div class="form-group">
+
+                    <select class="form-control" name="" id="approvalState" required>
+                        <option disabled selected value="">Choose Action</option>
+                        <option value="1">Approve</option>
+                        <option value="0">Unapprove</option>
+
+                    </select>
+                </div>
+                <button class="btn btn-primary mx-2" type="button" onclick="batchToggleApproval()" >
+                    <span class="spinner-border spinner-border-sm mr-1" id="spinner" role="status" aria-hidden="true" style="display: none;"></span>
+                    Submit
+                </button>
+              
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+
+        <table id="basic-datatable" class="table dt-responsive nowrap table-sm">
+            <thead>
+                <tr>
+                    <!-- <th>#</th> -->
+                    <th>Name</th>
+                    <th>Company Name</th>
+                    <th>Status</th>
+                    <th>Phone Number</th>
+                    <th>Alternative Phone Number</th>
+                    <th>Passport Number</th>
+                    <th>Nida Number</th>
+                    <th>Nationality Type</th>
+                    <th>country</th>
+                    <th>AreaOf Interest</th>
+                    <th>email</th>
+                    <th>Physical Address</th>
+                    <th>TypeOf Business</th>
+                    <th>Sector</th>
+                    <th>Registration Body</th>
+                    <th>Date</th>
+                  
 
 
-    <tbody>
-        <?php $index = 0 ?>
-        <?php foreach ($registers as $reg) : ?>
-            <tr id="regId<?= $reg->id ?>">
+                </tr>
+            </thead>
 
-                <td><?= $reg->firstName ?></td>
-                <td><?= $reg->middleName ?></td>
-                <td><?= $reg->companyName ?></td>
-                <td><?= $reg->phoneNumber ?></td>
-                <td><?= $reg->alternativePhoneNumber ?></td>
-                <td><?= $reg->passportNumber ?></td>
-                <td><?= $reg->nidaNumber ?></td>
-                <td><?= $reg->nationalityType ?></td>
-                <td><?= $reg->country ?></td>
-                <td><?= $reg->areaOfInterest ?></td>
-                <td><?= $reg->email ?></td>
-                <td><?= $reg->physicalAddress ?></td>
-                <td><?= $reg->typeOfBusiness ?></td>
-                <td><?= $reg->sector ?></td>
-                <td><?= $reg->registrationBody ?></td>
-                <?php if ($reg->approved == 1) : ?>
-                    <td>Approved</td>
-                <?php else : ?>
-                    <td class="text-danger">Not Approved</td>
-                <?php endif; ?>
-                <td><?= $reg->createdAt ?></td>
-                <?php
 
-                ?>
-                <td class="box">
-                    <button type="button" id="actionButton" class="btn btn-<?= $reg->approved == 1 ? 'danger' : 'success' ?> btn-sm" onclick="toggleApproval('<?= $index++ ?>','<?= $reg->id ?>','<?= $reg->approved == 0 ? 1 : 0 ?>')">
+            <tbody>
+                <?php $index = 0 ?>
+                <?php foreach ($registers as $reg) : ?>
+                    <tr id="regId<?= $reg->id ?>">
+
+                        <td>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input " name="registerId" id="check" value="<?= $reg->id ?>">
+                                    <?= $reg->firstName  . ' ' . $reg->middleName . ' ' . $reg->lastName ?>
+                                </label>
+                            </div>
+                        </td>
+
+
+                        <td><?= $reg->companyName ?></td>
                         <?php if ($reg->approved == 1) : ?>
-                            Decline
+                            
+                            <td>
+                            <span class="badge badge-pill badge-success">Approved</span>
+                                
+                            </td>
                         <?php else : ?>
-                            </i> Accept
+             
+                            <td>
+                            <span class="badge badge-pill badge-danger">Unapproved</span>
+                            </td>
                         <?php endif; ?>
-                    </button>
+                        <td><?= $reg->phoneNumber ?></td>
+                        <td><?= $reg->alternativePhoneNumber ?></td>
+                        <td><?= $reg->passportNumber ?></td>
+                        <td><?= $reg->nidaNumber ?></td>
+                        <td><?= $reg->nationalityType ?></td>
+                        <td><?= $reg->country ?></td>
+                        <td><?= $reg->areaOfInterest ?></td>
+                        <td><?= $reg->email ?></td>
+                        <td><?= $reg->physicalAddress ?></td>
+                        <td><?= $reg->typeOfBusiness ?></td>
+                        <td><?= $reg->sector ?></td>
+                        <td><?= $reg->registrationBody ?></td>
+                       
+                        <td><?= $reg->createdAt ?></td>
+                        
+                     
+
+                    </tr>
+                <?php endforeach; ?>
 
 
-
-                </td>
-
-            </tr>
-        <?php endforeach; ?>
-
-
-    </tbody>
-</table>
+            </tbody>
+        </table>
+    </div>
+</div>
 <script>
-    //a function to approve or un approve the  application
-    function toggleApproval(index, id, approvalState) {
-    const action = approvalState === 0 ? 'Decline' : 'Accept';
+    
 
-    Swal.fire({
-        text: `Do you want to ${action} this application`,
-        type: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes',
-        cancelButtonText: 'No'
-    }).then((result) => {
-        if (result.value) {
-            const table = $('#basic-datatable').DataTable();
-            const actionButton = table.cell(index, 17);
-            actionButton.data('<i class="fas fa-sync icon spin "></i>').draw();
+    function batchToggleApproval() {
+        const approvalState = document.querySelector('#approvalState').value
+        const checkboxes = document.querySelectorAll('input[name="registerId"]:checked')
+        const registerIds = [...checkboxes].map(checkbox => checkbox.value)
 
-            fetch('toggleApproval', {
-                method: 'post',
-                headers: {
-                    'Content-Type': 'application/json;charset=utf-8',
-                    'X-Requested-With': 'XMLHttpRequest',
-                    'X-CSRF-TOKEN': document.querySelector('.token').value
-                },
-                body: JSON.stringify({
-                    index,
-                    id,
-                    approvalState
-                })
-            }).then(res => res.json()).then(data => {
-                const { token, msg, status, approval, button } = data;
+        if (registerIds.length) {
 
-                actionButton.data(button);
-                table.cell(index, 15).data(approval).draw();
 
-                document.querySelector('.token').value = token;
+            const action = approvalState === 0 ? 'Decline' : 'Accept';
 
-                Swal.fire({
-                    text: msg,
-                    type: status === 1 ? 'success' : 'warning',
-                });
+            Swal.fire({
+                text: `Do you want to ${action} selected Applicants `,
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes',
+                cancelButtonText: 'No'
+            }).then((result) => {
+                if (result.value) {
+
+                    const spinner = document.querySelector('#spinner')
+                    spinner.style.display ='inline-block'
+
+
+                    fetch('batchToggleApproval', {
+                        method: 'post',
+                        headers: {
+                            'Content-Type': 'application/json;charset=utf-8',
+                            'X-Requested-With': 'XMLHttpRequest',
+                            'X-CSRF-TOKEN': document.querySelector('.token').value
+                        },
+                        body: JSON.stringify({
+                            approvalState,
+                            registerIds
+                        })
+                    }).then(res => res.json()).then(data => {
+                        spinner.style.display ='none'
+                        const {
+                            token,
+                            msg,
+                            status,
+                            approval,
+                            button
+                        } = data;
+
+
+
+                        document.querySelector('.token').value = token;
+
+                        Swal.fire({
+                            text: msg,
+                            type: status === 1 ? 'success' : 'warning',
+                        });
+                        location.reload()
+                    });
+                }
+            });
+
+
+
+        } else {
+            Swal.fire({
+                text: 'Select at least one applicant ',
+                type: 'warning',
             });
         }
-    });
-}
 
+
+    }
 </script>
 <?= $this->endSection() ?>

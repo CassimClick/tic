@@ -5,9 +5,9 @@
         <form id="reportForm">
             <div class="row">
                 <div class="form-group col-md-3">
-                    <label for="">Status</label>
-                    <select class="form-control" name="status" id="" required>
-                        <option value="">-Status-</option>
+                    <label for="">Approval State</label>
+                    <select class="form-control" name="approvalState" id="" required>
+                        <option value="">-Approval State-</option>
                         <option value="1">Approved</option>
                         <option value="0">Un-Approved</option>
                         <option value="">All</option>
@@ -15,7 +15,7 @@
                 </div>
                 <div class="form-group col-md-3">
                     <label for="">Month</label>
-                    <select class="form-control" name="month" id="">
+                    <select class="form-control" name="month" id="" required>
                         <option value="">-Month-</option>
                         <option value="1">January</option>
                         <option value="2">February</option>
@@ -54,9 +54,9 @@
 
         </div>
     </div>
-    <!-- <div class="card-footer">
-        <a href="button" target="_blank" class="btn btn-primary btn-sm"><i class="fas fa-download"></i> Download</a>
-    </div> -->
+    <div class="card-footer">
+        <a href="button" target="_blank" class="btn btn-primary btn-sm" id="link"><i class="fas fa-download"></i> Download</a>
+    </div>
 </div>
 <script>
     const reportForm = document.querySelector('#reportForm');
@@ -75,7 +75,8 @@
             const {
                 token,
                 msg,
-                report
+                report,
+                link
             } = data;
 
             console.log(data);
@@ -83,6 +84,7 @@
             document.querySelector('#report').innerHTML = report;
             $('#basic-datatable').DataTable();
             document.querySelector('.token').value = token;
+            document.querySelector('#link').setAttribute('href',link)
         });
     })
 </script>

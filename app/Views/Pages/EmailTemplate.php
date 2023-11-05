@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,9 +15,9 @@
 
         .header {
             background-color: #35A7CC;
-            color: #ffffff;
+            color:white;
             text-align: center;
-            padding: 20px;
+            padding: 10px;
         }
 
         .content {
@@ -25,17 +26,21 @@
         }
     </style>
 </head>
+
 <body>
     <div class="header">
-        <h1>Hello John</h1>
+        <h1>Welcome</h1>
     </div>
 
     <div class="content">
-        <p>Hello <?=$name ?>,</p>
-        <p>Thank you for the invitation to attend the training. I am pleased to inform you that I gladly accept the opportunity and look forward to participating.</p>
-        <p>Please provide any additional details or materials I may need in preparation for the training.</p>
-        <p>Best regards,</p>
-        <p>Your Name</p>
+        <p> Hello <b><?= $name ?></b>,</p>
+
+        <p>Congratulations on being selected to join the Tanzania-Netherlands Economic Forum! Your dedication and expertise have truly set you apart, and it's a well-deserved recognition of your contributions to the field. Your participation in this forum is not only a personal achievement but also a testament to your commitment to fostering economic collaboration and innovation. Be prepared for an exciting journey ahead as you engage with like-minded professionals and contribute to meaningful discussions. Rest assured, you will be contacted shortly with further updates and details on the upcoming events. Wishing you continued success and impact in this new endeavor.</p>
+
+        <p> Best regards,</p>
+
+        <p>Tanzania Investment Center</p>
     </div>
 </body>
+
 </html>

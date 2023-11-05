@@ -29,9 +29,11 @@ $routes->group('admin', ['filter' => 'AdminAuthFilter'], function ($routes) {
     
     
     $adminRoutes['toggleApproval'] = 'AdminController::toggleApproval';
+    $adminRoutes['batchToggleApproval'] = 'AdminController::batchToggleApproval';
     $adminRoutes['registrations'] = 'AdminController::registrations';
     $adminRoutes['reports'] = 'AdminController::reports';
     $adminRoutes['generateReports'] = 'AdminController::generateReports';
+    $adminRoutes['downloadReport/(:any)/(:any)/(:any)'] = 'AdminController::downloadReport/$1/$2/$3';
   
 
     $routes->map($adminRoutes);
